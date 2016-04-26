@@ -1,16 +1,23 @@
-This will be a C++ implementations of the OpenTLD (aka Predator)
-----------------------------------------------------------------------------
-This is a work in progress, as of right now the code is functional but pretty slow.
-----------------------------------------------------------------------------
+Data:2016.03.15
+Author: Forrest Yan(Yan Xuwei)
+Lab: Image Lab of Xidian University
+Email: yan_xuwei@126.com
+
+
+This will be a OpenCL implementations of the OpenTLD 
+Based on the C++ Implementation of alantrrs(https://github.com/alantrrs/OpenTLD.git)
+The frame frequence increased about for 4 times without any detection performance loss
+
+Before runing the Code 
+the computer must have OpenCV and OpenCL environment
+
+
 Installation Notes
 =====================================
-git clone git@github.com:alantrrs/OpenTLD.git
-cd OpenTLD
-mkdir build
-cd build
-cmake ../src/
+git clone https://github.com/ForrestYan/TLD_OpenCL_1.0.git
+cd TLD_OpenCL_1.0
 make
-cd ../bin/
+
 %To run from camera
 ./run_tld -p ./parameters.yml -tl
 %To run from file
@@ -18,18 +25,16 @@ cd ../bin/
 %To init bounding box from file
 ./run_tld -p ./parameters.yml -s ./06_car/car.mpg -b ./06_car/init.txt -tl
 %To train only in the firs frame (no tracking, no learning)
-./run_tld -p ../parameters.yml -s ../datasets/06_car/car.mpg -b ../datasets/06_car/init.txt 
+./run_tld -p ./parameters.yml -s ./06_car/car.mpg -b ./06_car/init.txt 
 %To test the final detector (Repeat the video, first time learns, second time detects)
-./run_tld -p ../parameters.yml -s ../datasets/06_car/car.mpg -b ../datasets/06_car/init.txt -tl -r
-
-=====================================
-Evaluation
-=====================================
-The output of the program is a file called bounding_boxes.txt which contains all the detections made through the video. This file should be compared with the ground truth file to evaluate the performance of the algorithm. This is done using a python script:
-python ../datasets/evaluate_vis.py ../datasets/06_car/car.mpg bounding_boxes.txt ../datasets/06_car/gt.txt
+./run_tld -p ./parameters.yml -s ./06_car/car.mpg -b ./06_car/init.txt -tl -r
 
 ====================================
 Thanks
 ====================================
 To Zdenek Kalal for realeasing his awesome algorithm
+To Alantrrs for realeasing his C++ implement of TLD algorithm
+
+
+
 
